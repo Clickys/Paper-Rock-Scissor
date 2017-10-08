@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+
+<body style="background-color: black">
+    <div id="wrapper">
+        <div id="option1">
+            <i class="fa fa-desktop" aria-hidden="true" ></i>
+        </div>
+        <div id="option2">
+            <i>VS</i>
+        </div>
+        <div id="option3">
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div id="computerResults">
+
+        </div>
+        <div id="playerResults">
+
+        </div>
+        <div id = "weaponPick">
+            <h1>Choose Your Weapon</h1>
+            <i class="fa fa-hand-scissors-o" aria-hidden="true" id="scissor" onclick="handlers.playerPickWeapon(2)"></i>
+            <i class="fa fa-hand-rock-o" aria-hidden="true" id="rock"  onclick="handlers.playerPickWeapon(0)"></i>
+            <i class="fa fa-hand-paper-o" aria-hidden="true" id="paper"  onclick="handlers.playerPickWeapon(1)"></i>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
