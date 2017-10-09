@@ -1,15 +1,16 @@
 body {
     color: white;
 }
+
 #wrapper {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-around;
-
     background-color: black;
     height: 90vh;
 }
+
 #option1 {
     background-color: black;
     width: 30vw;
@@ -18,9 +19,9 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 60px;
-
 }
-#option1 > i , #option2 > i , #option3 > i {
+
+#option1>i, #option2>i, #option3>i {
     color: white;
 }
 
@@ -32,7 +33,6 @@ body {
     font-size: 70px;
 }
 
-
 #option3 {
     background-color: black;
     width: 30vw;
@@ -42,35 +42,67 @@ body {
     justify-content: center;
     font-size: 60px
 }
-#weaponPick > i {
-font-size: 35px;
-padding-left: 50px;
 
+#weaponPick>i {
+    font-size: 35px;
+    padding-left: 50px;
 }
-#weaponPick > i:hover {
+
+#weaponPick>i:hover {
     color: red;
     cursor: pointer;
 }
 
 #playerResults {
-text-align: center;
-background-color: black;
-width: 10vw;
-height: 10vh;
-position: absolute;
-top: 20%;
-right: 30%;
+    text-align: center;
+    background-color: black;
+    width: 10vw;
+    height: 10vh;
+    position: absolute;
+    top: 20%;
+    right: 30%;
 }
+
 #computerResults {
-text-align: center;
-background-color:black;
-width: 10vw;
-height: 10vh;
-position: absolute;
-top: 20%;
-left: 30%;
+    text-align: center;
+    background-color: black;
+    width: 10vw;
+    height: 10vh;
+    position: absolute;
+    top: 20%;
+    left: 30%;
 }
+
 i.fa-hand-rock-o.rockIcon {
     font-size: 55px;
     color: #40FFC0;
+}
+
+i.fa-hand-paper-o.paperIcon {
+    font-size: 55px;
+    color: #B050D0;
+}
+
+i.fa-hand-scissors-o.scissorIcon {
+    font-size: 55px;
+    color: #00FF00;
+}
+
+#winner {
+    text-align: center;
+    background-color: black;
+    width: 60vw;
+    height: 10vh;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    font-size: 60px;
+    font-family: "Comic Sans MS";
+
+}
+
+.computeerWin {
+    background-color: red;
+    border: none;
+    border-radius: 40px 10px;
 }

@@ -9,17 +9,16 @@ const gameTools = {
 		name: 'Paper',
 		isPlayerPick: false,
 		isComputerPick: false,
-		weaponClass: 'fa fa-hand-paper-o'
+		weaponClass: 'fa fa-hand-paper-o paperIcon'
 	}, {
 		name: 'Scissor',
 		isPlayerPick: false,
 		isComputerPick: false,
-		weaponClass: 'fa fa-hand-scissors-o'
+		weaponClass: 'fa fa-hand-scissors-o scissorIcon'
 	}],
 
 	playerPick: function(position) {
 		debugger;
-		this.resetOptions();
 		this.gameOptions[position].isPlayerPick = true;
 		this.displayPick();
 		view.displayePlayer();
@@ -38,11 +37,10 @@ const gameTools = {
 	},
 
 	computerPick: function() {
-		this.resetOptions();
 		let computerPick = Math.floor((Math.random() * 3));
 		this.gameOptions[computerPick].isComputerPick = true;
 		this.displayPick();
-		view.displayePlayer();
+		view.displayComputer();
 		return this.gameOptions[computerPick].name;
 	},
 
@@ -50,30 +48,33 @@ const gameTools = {
 		this.gameOptions.forEach(function(obj) {
 			obj.isPlayerPick = false;
 			obj.isComputerPick = false;
-			view.clearDOM();
+
 		})
+		view.clearDOM();
 	},
 
 	comparePlayerVsComputerPick: function(pos) {
+		this.resetOptions();
 		let playerPick = this.playerPick(pos);
 		let computerPick = this.computerPick();
 
 		if (playerPick === computerPick) {
-			console.log('Tie');
+			view.isWinner();
 		} else if (playerPick === 'Rock' && computerPick === 'Paper') {
-			console.log('Player wins');
+			view.isWinner('Computer');
 		} else if (playerPick === 'Rock' && computerPick === 'Scissor') {
-			console.log('Player Wins');
+			view.isWinner('Player');
 		} else if (playerPick === 'Paper' && computerPick === 'Rock') {
-			console.log('Player Wins');
+			view.isWinner('Player');
 		} else if (playerPick === 'Paper' && computerPick === 'Scissor') {
-			console.log('Computer Wins');
+			view.isWinner('Computer');
 		} else if (playerPick === 'Scissor' && computerPick === 'Paper') {
-			console.log('Player Win');
+			view.isWinner('Player');
 		} else if (playerPick === 'Scissor' && computerPick === 'Rock') {
-			console.log('Computer win');
+			view.isWinner('Computer');
 		}
 	}
+
 
 
 };
@@ -86,7 +87,6 @@ const handlers = {
 const view = {
 	displayePlayer: function() {
 		let playerResults = document.getElementById('playerResults');
-		let computerResutls = document.getElementById('computerResults');
 
 		gameTools.gameOptions.forEach(function(obj) {
 			if (obj.isPlayerPick === true) {
@@ -103,11 +103,33 @@ const view = {
 			}
 		})
 	},
+	displayComputer: function() {
+		let computerResutls = document.getElementById('computerResults');
+		gameTools.gameOptions.forEach(function(obj) {
+			if (obj.isComputerPick === true) {
+				let createI = document.createElement('i');
+				createI.className += obj.weaponClass;
+				computerResutls.appendChild(createI);
+			}
+		})
+	},
+	isWinner: function(winner) {
+		let winnerDisplay = document.getElementById('winner');
+		if (winner === undefined) {
+			winnerDisplay.innerHTML = `Its tie !!`;
+		} else {
+			winnerDisplay.innerHTML = `${winner} Won The Round !!`;
+		}
+
+	},
+
 	clearDOM: function() {
 		let playerResults = document.getElementById('playerResults');
 		let computerResutls = document.getElementById('computerResults');
+		let winnerDisplay = document.getElementById('winner');
 
 		playerResults.innerHTML = '';
 		computerResutls.innerHTML = '';
+		winnerDisplay.innerHTML = '';
 	}
 }
